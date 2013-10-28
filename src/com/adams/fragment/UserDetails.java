@@ -48,6 +48,7 @@ public class UserDetails extends SherlockFragmentActivity {
 			listview = getListView();
 			HttpRequestHelper.getDatas(112, HttpRequestParamHelper.getHot(uid),
 					call);
+			
 		}
 
 		RequestCallBack<ResultItem> call = new RequestCallBack<ResultItem>() {
