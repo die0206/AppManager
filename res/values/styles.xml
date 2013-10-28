@@ -1,0 +1,17 @@
+<resources xmlns:ptr="http://schemas.android.com/apk/res-auto">
+
+    <style name="AppBaseTheme" parent="android:Theme.Light.NoTitleBar">
+    </style>
+
+            
+    <style name="common_pull_listview"  >
+        <item name="android:cacheColorHint" >#00000000</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:fastScrollEnabled">false</item>
+        <item name="android:footerDividersEnabled">false</item>
+        <item name="android:headerDividersEnabled">false</item>
+        <item name="android:smoothScrollbar">true</item>
+        
+    </style>
+
+</resources>
