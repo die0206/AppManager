@@ -62,13 +62,7 @@ public class UserDetails extends SherlockFragmentActivity {
 
 			@Override
 			public void onScuess(RequestResopnse<ResultItem> response) {
-				String[] key = null;
-				int count = response.getResults().getItems("list").size();
-				System.out.println("yyyyy" + count);
-
-				List<ResultItem> reuslts = response.getResults().getItems(
-						"list");
-
+				List<ResultItem> reuslts = response.getResults().getItems("list");
 				ResultItemAdapter rs = new ResultItemAdapter(listview, reuslts,
 						R.layout.item_shows, new String[] { "iconurlm",
 								"category", "appname" }, new int[] {
