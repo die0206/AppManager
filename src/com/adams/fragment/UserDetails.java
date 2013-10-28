@@ -38,7 +38,7 @@ public class UserDetails extends SherlockFragmentActivity {
 		String[] data = {};
 		int uid = 78;
 		View listview = null;
-		List<ResultItem> listResultItem ; 
+		 List<ResultItem> listResultItem = null; 
 		
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
@@ -69,12 +69,15 @@ public class UserDetails extends SherlockFragmentActivity {
 
 			@Override
 			public void onScuess(RequestResopnse<ResultItem> response) {
+		
+				List<ResultItem> reuslts = response.getResults().getItems("list");
 				
-				for(ResultItem ri:response.getResults().getItems("list")){
+				System.out.println("sssssssssss"+reuslts);
+				for(ResultItem ri : reuslts){
+					System.out.println("============="+ri);
 					listResultItem.add(ri);
 				}
-						
-				List<ResultItem> reuslts = response.getResults().getItems("list");
+				
 				ResultItemAdapter rs = new ResultItemAdapter(listview, reuslts,
 						R.layout.item_shows, new String[] { "iconurlm",
 								"category", "appname" }, new int[] {
