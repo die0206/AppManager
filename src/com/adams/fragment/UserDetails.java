@@ -5,7 +5,7 @@ import java.util.List;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
@@ -38,6 +38,7 @@ public class UserDetails extends SherlockFragmentActivity {
 		String[] data = {};
 		int uid = 78;
 		View listview = null;
+		List<ResultItem> listResultItem ; 
 		
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
@@ -46,8 +47,16 @@ public class UserDetails extends SherlockFragmentActivity {
 			setEmptyText("this is my listFragme");
 			setHasOptionsMenu(true);
 			listview = getListView();
-			HttpRequestHelper.getDatas(112, HttpRequestParamHelper.getHot(uid),
-					call);
+			HttpRequestHelper.getDatas(112, HttpRequestParamHelper.getHot(uid), call);
+			
+		}
+
+		@Override
+		public void onListItemClick(ListView listView, View view, int position, long id) {
+			super.onListItemClick(listView, view, position, id);
+			
+			System.out.println("ssss");
+		//	System.out.println(listResultItem.get(1).getValue("appid"));
 			
 		}
 
@@ -55,14 +64,16 @@ public class UserDetails extends SherlockFragmentActivity {
 			
 			@Override
 			public void onComplete(RequestResopnse<ResultItem> response) {
-				if (response.getWhat() == 112) {
-					Object str = response.getResults().getItems("list").get(1)
-							.getValue("iconurlm");
-				}
+
 			}
 
 			@Override
 			public void onScuess(RequestResopnse<ResultItem> response) {
+				
+				for(ResultItem ri:response.getResults().getItems("list")){
+					listResultItem.add(ri);
+				}
+						
 				List<ResultItem> reuslts = response.getResults().getItems("list");
 				ResultItemAdapter rs = new ResultItemAdapter(listview, reuslts,
 						R.layout.item_shows, new String[] { "iconurlm",
