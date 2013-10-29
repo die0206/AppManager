@@ -11,7 +11,9 @@ public enum HttpRequestType {
 	INIT(""),			//首页初始化信息
 	VERSION("/app/v1/701"),
 	GETMOIVE("/login.action"),//首页初始化信息
-	SHOWUSER("/userapplist.action");
+	SHOWUSER("/userapplist.action"),
+	DETAUK("/appdetail.action"),
+	MYSELF("/userinfo.action");
 	
 	
 	

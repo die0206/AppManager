@@ -1,7 +1,9 @@
 package com.adams.fragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
+import com.adams.appmanager.DetailMessage;
 import com.adams.appmanager.R;
 import com.adams.fragment.LoaderCustomSupport.AppListFragment;
 import com.matti.idev.common.request.RequestCallBack;
@@ -38,7 +41,7 @@ public class UserDetails extends SherlockFragmentActivity {
 		String[] data = {};
 		int uid = 78;
 		View listview = null;
-		 List<ResultItem> listResultItem = null; 
+		 List<ResultItem> listResultItem ; 
 		
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
@@ -54,9 +57,17 @@ public class UserDetails extends SherlockFragmentActivity {
 		@Override
 		public void onListItemClick(ListView listView, View view, int position, long id) {
 			super.onListItemClick(listView, view, position, id);
+		
+			System.out.println("AAAAAAAAAAAA"+listResultItem.get(position).getValue("appid"));
+			Object strob = listResultItem.get(position).getValue("appid");
+			String pid = String.valueOf(strob);
+		    System.out.println(pid);
 			
-			System.out.println("ssss");
-		//	System.out.println(listResultItem.get(1).getValue("appid"));
+			Intent i = new Intent(getActivity(), DetailMessage.class);
+			Bundle  bd = new Bundle();
+			bd.putString("pid", pid);
+			i.putExtra("strpid", bd);
+			startActivity(i);
 			
 		}
 
@@ -69,14 +80,16 @@ public class UserDetails extends SherlockFragmentActivity {
 
 			@Override
 			public void onScuess(RequestResopnse<ResultItem> response) {
-		
+			
 				List<ResultItem> reuslts = response.getResults().getItems("list");
-				
+				listResultItem = new ArrayList<ResultItem>();
 				System.out.println("sssssssssss"+reuslts);
 				for(ResultItem ri : reuslts){
 					System.out.println("============="+ri);
 					listResultItem.add(ri);
+					
 				}
+			
 				
 				ResultItemAdapter rs = new ResultItemAdapter(listview, reuslts,
 						R.layout.item_shows, new String[] { "iconurlm",

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.adams.appmanager.R;
 import com.adams.fragment.LoaderCustomSupport;
-import com.adams.fragment.Tab1Fragment;
 import com.adams.fragment.CinemaFragment;
+import com.adams.fragment.MySelfMessage;
 import com.adams.fragment.UserDetails;
 import com.adams.utils.CreateTabsTool;
 
@@ -21,9 +21,10 @@ public class MainActivity extends SherlockFragmentActivity {
 		setContentView(R.layout.fragment_tabs_pager);
 
 		ArrayList<Class> fragments = new ArrayList<Class>();
-		fragments.add(UserDetails.Newhost.class);
-		fragments.add(CinemaFragment.CinemaListFragment.class);
+		fragments.add(UserDetails.Newhost.class);		
 		fragments.add(LoaderCustomSupport.AppListFragment.class);
+		fragments.add(MySelfMessage.MymessageListFragment.class);
+		//fragments.add(CinemaFragment.CinemaListFragment.class);
 
 		CreateTabsTool.createFragmentTabs(this, savedInstanceState,
 				new String[] { "热门", "管理", "我的" }, fragments);
@@ -33,7 +34,7 @@ public class MainActivity extends SherlockFragmentActivity {
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
+//		super.onSaveInstanceState(outState);
 		outState.putString("tab", CreateTabsTool.getmTabHost()
 				.getCurrentTabTag());
 	}

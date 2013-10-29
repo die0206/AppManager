@@ -49,11 +49,38 @@ public class HttpRequestParamHelper {
 
 	/**
 	 * 获取网络热门
+	 * 
 	 * @param uid
 	 * @return
 	 */
 	public static HttpRequestParams getHot(int uid) {
 		HttpRequestParams requestParams = getCommonParams(HttpRequestType.SHOWUSER);
+		requestParams.getParams().put("uid", uid);
+		requestParams.setMethod(HttpMethod.GET);
+		return requestParams;
+	}
+
+	/**
+	 * 获取网络的软件的详细信息
+	 * 
+	 * @param pid
+	 * @return
+	 */
+	public static HttpRequestParams getdetail(int uid, String pid) {
+		HttpRequestParams requestParams = getCommonParams(HttpRequestType.DETAUK);
+		requestParams.getParams().put("uid", uid);
+		requestParams.getParams().put("pid", pid);
+		requestParams.setMethod(HttpMethod.GET);
+		return requestParams;
+	}
+
+	/**
+	 * 获取用户
+	 * @param uid
+	 * @return
+	 */
+	public static HttpRequestParams getMySelf(int uid) {
+		HttpRequestParams requestParams = getCommonParams(HttpRequestType.MYSELF);
 		requestParams.getParams().put("uid", uid);
 		requestParams.setMethod(HttpMethod.GET);
 		return requestParams;

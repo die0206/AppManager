@@ -9,6 +9,7 @@
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -27,6 +28,22 @@
         <activity android:name="com.adams.fragment.UserDetails" >
         </activity>
         <activity android:name="com.adams.appmanager.LoginManage" >
+        </activity>
+        <activity
+            android:name="com.adams.appmanager.DetailMessage"
+            android:label="@string/title_activity_detail_message" >
+        </activity>
+        <activity
+            android:name="com.adams.appmanager.DetailMessages"
+            android:label="@string/title_activity_detail_messages" >
+        </activity>
+        <activity
+            android:name="com.adams.appmanager.MyselfMessage"
+            android:label="@string/title_activity_myself_message" >
+        </activity>
+        <activity
+            android:name="com.adams.fragment.MySelfMessage"
+            android:label="@string/title_activity_my_self_message" >
         </activity>
     </application>
 
